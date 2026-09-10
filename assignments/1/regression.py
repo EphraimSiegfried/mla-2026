@@ -19,7 +19,7 @@ def mean_squared_error(y, yr):
 
 
 def determination(y, yr):
-    return 1 - np.sum((y - yr) ** 2) / np.sum(y - np.mean(y))
+    return 1 - np.sum((y - yr) ** 2) / np.sum((y - np.mean(y)) ** 2)
 
 
 def main():
@@ -50,7 +50,7 @@ def main():
     ax.plot(x_dense, np.exp(w * x_dense + b), "-", label="Model h")
     ax.set_yscale("log")
     ax.set_xlabel("Age")
-    ax.set_xlabel("PCB residues (ln)")
+    ax.set_ylabel("PCB residues")
     ax.set_title("Linear regression of PCB data with $h(x)=exp(ax + b)$")
     ax.legend()
     fig.savefig("figures/regression-h1.png")
@@ -64,12 +64,12 @@ def main():
     w, b = linear_regression(np.sqrt(x), np.log(y))
     yr = np.exp(w * np.sqrt(x) + b)
     ax2.plot(x, y, "+", label="data")
-    ax2.plot(x_dense, np.exp(w * np.sqrt(x_dense) + b), "-", label="Model h")
+    ax2.plot(x_dense, np.exp(w * np.sqrt(x_dense) + b), "-", label="Model h'")
     mse = mean_squared_error(y, yr)
     print(f"h=exp(a*sqrt(x)+b): {w[0]=} {b=} {mse=}")
     ax2.set_yscale("log")
     ax2.set_xlabel("Age")
-    ax2.set_xlabel("PCB residues (ln)")
+    ax2.set_ylabel("PCB residues")
     ax2.set_title("Linear regression of PCB data with $h(x)=exp(a\sqrt{x} + b)$")
     ax2.legend()
     fig2.savefig("figures/regression-h2.png")
