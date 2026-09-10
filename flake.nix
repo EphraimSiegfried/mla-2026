@@ -57,6 +57,7 @@
 
             packages = [
               pythonEnv
+              pkgs.typst
 
               # Useful C/System dependencies for native compilation or graphics
               pkgs.zlib
