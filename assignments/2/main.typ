@@ -86,7 +86,6 @@ Whether BoL should give person C credit depends on the distance function used. I
             & = X - bold(1) (1/N X^T bold(1))^T \
             & = X - bold(1) overline(x) = Z
   $
-+ TODO
 
 == Input Whitening (18 points)
 + #set enum(numbering: "i.")
@@ -105,13 +104,26 @@ Whether BoL should give person C credit depends on the distance function used. I
 + We know that $hat(x)_1 = x$ and $x_2 = sqrt(1-epsilon^2)hat(x)_1 + epsilon hat(x)_2 <=> hat(x)_2=(x_2-sqrt(1-epsilon^2)x_1)/epsilon$. We can substitute and find that
   $
     f(x) & = hat(w)_1 x_1 + hat(w)_2 (x_2-sqrt(1-epsilon^2)x_1)/epsilon \
-         & = x_1((hat(w)_1 epsilon - hat(w)_2 sqrt(1-epsilon^2))/epsilon) + x_2(hat(w)/epsilon)
+         & = x_1((hat(w)_1 epsilon - hat(w)_2 sqrt(1-epsilon^2))/epsilon) + x_2(hat(w)_2/epsilon)
   $
   Therefore $w_1, w_2$ can be expressed as
   $
     w_1 & = (hat(w)_1 epsilon - hat(w)_2 sqrt(1-epsilon^2))/epsilon \
-    w_2 & = hat(w)/epsilon
+    w_2 & = hat(w)_2/epsilon
   $
++ Since we can express $w_1, w_2$ as functions of $hat(w)_1, hat(w)_2$, we can deduct
+  $
+    w_1 & = (epsilon - sqrt(1-epsilon^2))/epsilon \
+    w_2 & = 1/epsilon
+  $
+  We then have the minimum amount
+  $
+    w_1^2 + w_2^2 & = ((epsilon - sqrt(1-epsilon^2))/epsilon)^2 + (1/epsilon)^2 \
+                  & = (epsilon^2 - 2 epsilon sqrt(1-epsilon^2) + 1-epsilon^2)/epsilon^2 \
+                  & = (2 epsilon sqrt(1-epsilon^2) + 2)/epsilon^2 <= C
+  $
++ We have $lim_(epsilon arrow 0)2 epsilon sqrt(1-epsilon^2) + 2 = 2$. Since the denominator also goes to 0, the whole expression will go to infinity $lim_(epsilon arrow 0) (2 epsilon sqrt(1-epsilon^2) + 2)/epsilon^2 = infinity$.
+
 
 = Hoeffding's Bound (15 points)
 The expected value of the random variable $X$ is $EE[X] = 1/3 (-2 + 0.8 + 1) = -0.2/3$. The expected value of S is $EE[S] = EE[sum^100_(i=1) X_i] = sum^100_(i=1) EE[X_i] = 100 * -0.2/3 = -20/3$. The lower bound of $X$ is $a=-2$ and upper bound is $b=1$. Choose $epsilon = 86/3$ and with Hoeffding's Bound we have
