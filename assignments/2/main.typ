@@ -125,7 +125,17 @@ $
 
 #set enum(numbering: "3.a")
 + #set enum(numbering: "1.")
-  +
+  + The empirical frequency of observing $1/20 sum^20_(i=10) X_i >= alpha$ is displayed in @bounds.
+  + The granularity is sufficient since dividing possible values of $sum^20_(i=10) X_i in {0, 1, 2, ...20}$ by 20 yields sample averages in increments of 0.05. This means that having $alpha=0.51$ is logically equivalent to $alpha=0.55$.
+  + The Markov bound is displayed in @bounds.
+  + The Chebyshev bound is displayed in @bounds.
+  + The Hoeffding bound is displayed in @bounds.
+  + The Hoeffding bound is the tightest upper bound because it decreases exponentially. The second tightest bound is Chebyshev's bound, which decreases quadratically. Finally, Markov's bound decreases inversly and is the largest upper bound. Hence, Hoeffdings bound is the most informative in telling how likely a random variable will diverge from their mean.
+  + The probability of $PP(1/20 sum^20_(i=1) X_i >= 1) = PP(1/20 sum^20_(i=1) X_i = 1) = PP(X_1 = 1 and X_2 = 1 ... and X_20 = 1) = 0.35^20 = 7.6 * 10^(-10)$. The probability of $PP(1/20 sum^20_(i=1) X_i >= 0.95) =PP(sum^20_(i=1) X_i = 19) + PP(sum^20_(i=1) X_i = 20) = binom(20, 19) * 0.35^19 * (1-0.35)^1 + 0.35^20= 3.6 * 10^(-8)$
+
+#figure(
+  image("figures/3_5.png"),
+) <bounds>
 
 
 
