@@ -56,7 +56,7 @@
   #v(2em)
   #text(size: 20.74pt)[
     Machine Learning A (2026) \
-    Home Assignment 1
+    Home Assignment 3
   ]
   #v(1.5em)
   #text(size: 14.4pt, fill: red)[Ephraim Siegfried (hsc282)]
@@ -83,7 +83,8 @@
   Since all inputs occur with equal probablility $P(X=x) = 0.5$. The risk is therefore
   $ R(hat(y)) = sum_(x in {0,1}) P(X=x) * P("error" | X=x) = 0.5 * (0.2 + 0)= 0.1 $.
 + If $x = 0$  the probabilistic classifier is always correct, since it always correctly predicts the label $y=0$, i.e. $P("error" | X = 0) = 0$. For $x=0$ if the true label is $y=1$, which happens 80% of times, the classifier errors 20% of times. For $x=1$ if the true label is $y=1$, which happens 20% of times, the classifier errors 80% of times. So $P("error" | X = 1) = 0.8 * 0.2 + 0.2 * 0.8 = 0.32$. The risk therefore is
-$ R = 0.5 (0 + 0.32) = 0.16 $
+  $ R = 0.5 (0 + 0.32) = 0.16 $
++ The model from (1) is the Bayes classifier which was shown to be the best classifier in the lecture.
 
 = Logistic Regression (50 points)
 
