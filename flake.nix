@@ -25,6 +25,7 @@
               numpy
               scipy
               sympy
+              scikit-learn
 
               # Data Processing
               pandas

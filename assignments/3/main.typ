@@ -84,6 +84,7 @@
   $ R(hat(y)) = sum_(x in {0,1}) P(X=x) * P("error" | X=x) = 0.5 * (0.2 + 0)= 0.1 $.
 + If $x = 0$  the probabilistic classifier is always correct, since it always correctly predicts the label $y=0$, i.e. $P("error" | X = 0) = 0$. For $x=0$ if the true label is $y=1$, which happens 80% of times, the classifier errors 20% of times. For $x=1$ if the true label is $y=1$, which happens 20% of times, the classifier errors 80% of times. So $P("error" | X = 1) = 0.8 * 0.2 + 0.2 * 0.8 = 0.32$. The risk therefore is
 $ R = 0.5 (0 + 0.32) = 0.16 $
+
 = Logistic Regression (50 points)
 
 == Cross-entropy error measure (16 points)
@@ -112,6 +113,16 @@ $
 $
 === Gradient for 0 and 1
 
+To get the label space {0,1} we can substitute $y_n$ with $t= (y_n + 1)/2$, where we get $g=-1/N sum^N_(n=1) (t x_n)/(1+e^(t w^t x_n))$. When we plug in -1 and 1 for $y_n$ in $g$ and in $g'=-1/N sum_(n=1)^N [y_n - theta (w^t x_n)]$, we see that they're equal.
+
++ For $y_n=1$ we have
+  - For $g$: $-1/N sum^N_(n=1) (x_n)/(1+e^(w^t x_n)) = -1/N sum^N_(n=1) 1 - theta(w^t x_n)$
+  - For $g'$: $-1/N sum^N_(n=1) 1 - theta(w^t x_n)$
+...
+
+Therefore they're both equal in both cases.
+
+
 === Influence of misclassified examples
 
 == Log-odds
@@ -128,3 +139,60 @@ $
 
 = Sleep Well (34 points)
 
+== Data understanding and preprocessing
+
+The frequencies of the class labels was calculated using numpy and is displayed in @classfreq.
+
+#figure(
+  table(
+    columns: 6,
+    align: center,
+    [Class], [0], [1], [2], [3], [4],
+    [Frequency], [0.52], [0.10], [0.25], [0.05], [0.08],
+  ),
+  caption: "Class frequencies",
+)<classfreq>
+
+== Classification
+
+=== Logistic Regression
+The sklearn library was used to compute the regression. No regularization was used. Errors are shown in @lr.
+
+#figure(
+  table(
+    columns: 2,
+    align: center,
+    [Test Loss], [Training Loss],
+    [0.10], [0.15],
+  ),
+  caption: "Logistic Regression Error",
+)<lr>
+
+
+=== Random Forest
+The sklearn library was used to compute the random forests. Errors are shown in @rf. No regularization was used.
+
+#figure(
+  table(
+    columns: 4,
+    align: center,
+    [Number of Trees], [Test Loss], [Training Loss], [OOB Score],
+    [50], [0.11], [0], [0.8476],
+    [100], [0.11], [0], [0.8501],
+    [200], [0.11], [0], [0.8518],
+  ),
+  caption: "Random Forest Error",
+)<rf>
+
+=== Nearest Neighbor
+The sklearn library was used to compute the KNN classification. Errors are shown in @knn. No regularization was used. The number of neighbors was determined by doing cross validation for every $k in {1, ..., 49}$ and picking the $k$ which had the least error.
+
+#figure(
+  table(
+    columns: 3,
+    align: center,
+    [Test Loss], [Training Loss], [K],
+    [0.10], [0.15], [46],
+  ),
+  caption: "KNN Error",
+)<knn>
