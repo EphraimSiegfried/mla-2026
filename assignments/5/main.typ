@@ -125,3 +125,4 @@ $
   x = sqrt((n z^2)/2 ln(1/d)) - sqrt(1/(2 n) log(1/d)) + 0.38 =
 $
 
+= Convolutional Neural Networks
