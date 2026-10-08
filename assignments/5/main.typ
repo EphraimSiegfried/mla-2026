@@ -126,3 +126,13 @@ $
 $
 
 = Convolutional Neural Networks
+
+The $G_x$ convolution is displayed in @fig-sobel-gx, the $G_y$ convolution is displayed in @fig-sobel-gy and the final feature map can be seen in @fig-sobel-g. The difference between convolution and cross correlation is that in cross correlation the kernel is flipped by $180 degree$. This would mean that in $G_x$ and $G_y$ that the black lines would be white and vice versa.
+
+#grid(
+  columns: 3,
+  gutter: 1em,
+  [ #figure(image("figures/sobel_gx.jpg"), caption: [$G_x$]) <fig-sobel-gx> ],
+  [ #figure(image("figures/sobel_gy.jpg"), caption: [$G_y$]) <fig-sobel-gy> ],
+  [ #figure(image("figures/sobel_g.jpg"), caption: [$G$]) <fig-sobel-g> ],
+)

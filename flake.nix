@@ -34,6 +34,8 @@
               # Machine Learning & Stats
               scikit-learn
               statsmodels
+              torch
+              torchvision
 
               # Visualization
               matplotlib
